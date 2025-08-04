@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.codency.seomate.ui.home.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/analysisFragment"
+        android:name="com.codency.seomate.ui.analysis.AnalysisFragment"
+        android:label="AnalysisFragment" />
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.codency.seomate.ui.report.ReportFragment"
+        android:label="ReportFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.codency.seomate.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
