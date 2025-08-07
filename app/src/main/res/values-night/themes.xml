@@ -1,7 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.SEOmate" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="fontFamily">@font/poppins</item>
+
+        <item name="colorPrimary">#A78BFA</item> <!-- Soft purple -->
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorSecondary">#BB86FC</item>
+        <item name="colorSurface">#121212</item>
+        <item name="backgroundColor">#1F1F1F</item>
+        <item name="colorOnBackground">#FFFFFF</item>
     </style>
 </resources>

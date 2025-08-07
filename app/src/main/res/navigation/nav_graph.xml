@@ -7,7 +7,14 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.codency.seomate.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_analysisFragment"
+            app:destination="@id/analysisFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_keywordFragment"
+            app:destination="@id/keywordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/analysisFragment"
         android:name="com.codency.seomate.ui.analysis.AnalysisFragment"
@@ -20,4 +27,9 @@
         android:id="@+id/settingsFragment"
         android:name="com.codency.seomate.ui.settings.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/keywordFragment"
+        android:name="com.codency.seomate.ui.KeywordFragment"
+        android:label="Keywords" />
+
 </navigation>

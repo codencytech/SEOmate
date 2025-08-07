@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">SEOmate</string>
+    <string name="app_name">SEO Pulse AI</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

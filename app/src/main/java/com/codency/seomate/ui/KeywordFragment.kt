@@ -1,34 +1,33 @@
-package com.codency.seomate.ui.analysis
+package com.codency.seomate.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.codency.seomate.databinding.FragmentAnalysisBinding
+import com.codency.seomate.databinding.FragmentKeywordBinding
 
-class AnalysisFragment : Fragment() {
+class KeywordFragment : Fragment() {
 
-    private var _binding: FragmentAnalysisBinding? = null
+    private var _binding: FragmentKeywordBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAnalysisBinding.inflate(inflater, container, false)
+        _binding = FragmentKeywordBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.backButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        // Placeholder content
+        binding.title.text = "Keyword Tracker"
+        binding.description.text = "Monitor your top keywords and their ranking changes."
 
-        // In the future: Receive SEO data via SafeArgs or ViewModel and display it
+        // TODO: replace with real keyword data
     }
 
     override fun onDestroyView() {
