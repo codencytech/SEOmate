@@ -25,14 +25,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Navigate to AnalysisFragment when "Check Now" is clicked
+        // Navigate to QuickscoreFragment when "Check Now" is clicked
         binding.checkNowButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_quickscoreFragment)
         }
 
         // Navigate to Audit Site (full site audit)
         binding.cardAuditSite.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_analysisFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_auditFragment)
         }
 
         // Navigate to Keyword Tracker
