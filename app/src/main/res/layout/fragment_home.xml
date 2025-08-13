@@ -19,7 +19,7 @@
             android:id="@+id/welcomeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome!"
+            android:text="Welcome back!"
             android:textSize="24sp"
             android:textColor="?attr/colorOnBackground"
             android:textStyle="bold"
@@ -65,8 +65,8 @@
                     android:layout_height="wrap_content"
                     android:text="Monitor your site's health"
                     android:textSize="14sp"
-                    android:textColor="?attr/colorOnBackground"
                     android:layout_marginTop="4dp"
+                    android:textColor="?attr/colorOnBackground"
                     android:fontFamily="@font/poppins" />
 
                 <Button
@@ -92,12 +92,16 @@
             android:textColor="?attr/colorOnBackground"
             android:fontFamily="@font/poppins" />
 
-        <!-- Cards arranged vertically -->
+        <!-- Cards arranged vertically (IDs added so we can attach listeners) -->
         <!-- 1. Audit Site -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAuditSite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             app:cardBackgroundColor="?attr/colorSurface">
@@ -137,9 +141,13 @@
 
         <!-- 2. Track Keywords -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTrackKeywords"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             app:cardBackgroundColor="?attr/colorSurface">
@@ -179,9 +187,13 @@
 
         <!-- 3. Fix SEO Errors -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFixErrors"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             app:cardBackgroundColor="?attr/colorSurface">
@@ -221,9 +233,13 @@
 
         <!-- 4. Generate Report -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGenerateReport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             app:cardBackgroundColor="?attr/colorSurface">
@@ -263,9 +279,13 @@
 
         <!-- 5. Competitor Analysis -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCompetitor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             app:cardBackgroundColor="?attr/colorSurface">
@@ -394,6 +414,11 @@
                 android:fontFamily="@font/poppins"
                 android:padding="4dp" />
         </LinearLayout>
+
+        <!-- Bottom spacer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="64dp" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

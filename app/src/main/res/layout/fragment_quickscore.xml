@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="?attr/backgroundColor">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quick SEO Score"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins"
+        android:textColor="?attr/colorOnBackground"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- URL Input -->
+    <EditText
+        android:id="@+id/inputUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter website URL"
+        android:inputType="textUri"
+        android:fontFamily="@font/poppins"
+        android:padding="12dp"
+        android:background="@drawable/input_bg"
+        android:textColor="?attr/colorOnBackground"
+        android:textColorHint="?attr/colorOnBackground" />
+
+    <!-- Check Score Button -->
+    <Button
+        android:id="@+id/btnCheckScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check Score"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:textColor="?attr/colorOnPrimary"
+        android:fontFamily="@font/poppins" />
+
+    <!-- Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:layout_gravity="center" />
+
+    <!-- Result Container (Hidden Initially) -->
+    <LinearLayout
+        android:id="@+id/resultContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="20dp">
+
+        <!-- SEO Score Display -->
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Score: --"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:fontFamily="@font/poppins"
+            android:textColor="?attr/colorOnBackground" />
+
+        <!-- AI Summary -->
+        <TextView
+            android:id="@+id/tvSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Summary will appear here..."
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="?attr/colorOnBackground" />
+
+        <!-- Full Audit Button -->
+        <Button
+            android:id="@+id/btnFullAudit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Run Full Audit"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
+            android:fontFamily="@font/poppins" />
+    </LinearLayout>
+
+</LinearLayout>

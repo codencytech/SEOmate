@@ -54,4 +54,14 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("com.google.android.material:material:1.11.0")
 
+    implementation("org.jsoup:jsoup:1.16.1")
+
+    // OkHttp for API requests
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+// JSON parsing
+    implementation("org.json:json:20230227")
+// Kotlin Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
 }

@@ -20,7 +20,40 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-        
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Navigate to AnalysisFragment when "Check Now" is clicked
+        binding.checkNowButton.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_quickscoreFragment)
+        }
+
+        // Navigate to Audit Site (full site audit)
+        binding.cardAuditSite.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_analysisFragment)
+        }
+
+        // Navigate to Keyword Tracker
+        binding.cardTrackKeywords.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_keywordFragment)
+        }
+
+        // Navigate to Fix SEO Errors
+        binding.cardFixErrors.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_fixerrorFragment)
+        }
+
+        // Navigate to Generate Report
+        binding.cardGenerateReport.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_reportFragment)
+        }
+
+        // Navigate to Competitor Analysis
+        binding.cardCompetitor.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_competitorFragment)
+        }
     }
 
     override fun onDestroyView() {

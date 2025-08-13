@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
@@ -14,6 +15,21 @@
         <action
             android:id="@+id/action_homeFragment_to_keywordFragment"
             app:destination="@id/keywordFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fixerrorFragment"
+            app:destination="@id/fixerrorFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_auditFragment"
+            app:destination="@id/auditFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_competitorFragment"
+            app:destination="@id/competitorFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_quickscoreFragment"
+            app:destination="@id/quickscoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/analysisFragment"
@@ -31,5 +47,26 @@
         android:id="@+id/keywordFragment"
         android:name="com.codency.seomate.ui.KeywordFragment"
         android:label="Keywords" />
+    <fragment
+        android:id="@+id/auditFragment"
+        android:name="com.codency.seomate.ui.AuditFragment"
+        android:label="fragment_audit"
+        tools:layout="@layout/fragment_audit" />
+    <fragment
+        android:id="@+id/competitorFragment"
+        android:name="com.codency.seomate.ui.CompetitorFragment"
+        android:label="fragment_competitor"
+        tools:layout="@layout/fragment_competitor" />
+    <fragment
+        android:id="@+id/fixerrorFragment"
+        android:name="com.codency.seomate.ui.fixerrorFragment"
+        android:label="fragment_fixerror"
+        tools:layout="@layout/fragment_fixerror" />
+    <fragment
+        android:id="@+id/quickscoreFragment"
+        android:name="com.codency.seomate.ui.quickscore.QuickScoreFragment"
+        android:label="Quick Score"
+        tools:layout="@layout/fragment_quickscore" />
+
 
 </navigation>
