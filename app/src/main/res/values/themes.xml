@@ -4,7 +4,7 @@
         <item name="fontFamily">@font/poppins</item>
 
         <!-- Primary theme colors -->
-        <item name="colorPrimary">#6C4BC1</item> <!-- Violet/Purple -->
+        <item name="colorPrimary">#6C4BC1</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="colorSecondary">#B388FF</item>
         <item name="colorSurface">#F5F5F5</item>

@@ -4,8 +4,8 @@
     android:id="@+id/home_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundColor"
-    android:padding="16dp"
+    android:background="#F5F7FA"
+    android:padding="0dp"
     android:fillViewport="true">
 
     <LinearLayout
@@ -14,36 +14,45 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Welcome Message -->
-        <TextView
-            android:id="@+id/welcomeText"
+        <!-- Gradient Header -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Welcome back!"
-            android:textSize="24sp"
-            android:textColor="?attr/colorOnBackground"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins" />
+            android:layout_height="180dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/gradient_header">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Let's optimize your SEO today."
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnBackground"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/poppins" />
+            <TextView
+                android:id="@+id/welcomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome back!"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Let's optimize your SEO today."
+                android:textSize="16sp"
+                android:textColor="#DDFFFFFF"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins" />
+        </LinearLayout>
 
         <!-- Big Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="-40dp"
+            android:layout_marginHorizontal="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="6dp"
             app:strokeColor="?attr/colorPrimary"
             app:strokeWidth="1dp"
-            app:cardBackgroundColor="?attr/colorSurface">
+            app:cardBackgroundColor="@android:color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:text="SEO Score"
                     android:textSize="18sp"
-                    android:textColor="?attr/colorOnBackground"
+                    android:textColor="#333333"
                     android:fontFamily="@font/poppins"
                     android:textStyle="bold" />
 
@@ -66,7 +75,7 @@
                     android:text="Monitor your site's health"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnBackground"
+                    android:textColor="#666666"
                     android:fontFamily="@font/poppins" />
 
                 <Button
@@ -75,8 +84,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Check Now"
-                    android:backgroundTint="?attr/colorPrimary"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:backgroundTint="#4CAF50"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
+                    android:textSize="15sp"
                     android:fontFamily="@font/poppins" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -89,249 +100,261 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="32dp"
-            android:textColor="?attr/colorOnBackground"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="#333333"
             android:fontFamily="@font/poppins" />
 
-        <!-- Cards arranged vertically (IDs added so we can attach listeners) -->
-        <!-- 1. Audit Site -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardAuditSite"
+        <!-- Tools Title -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="?attr/colorSurface">
+            android:padding="10dp"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAuditSite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:clickable="true"
+                android:focusable="true"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_audit"
-                    app:tint="?attr/colorPrimary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Audit Site"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Check SEO health"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_audit"
+                        app:tint="?attr/colorPrimary" />
 
-        <!-- 2. Track Keywords -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardTrackKeywords"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="?attr/colorSurface">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Audit Site"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            <LinearLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Check SEO health"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardTrackKeywords"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_keywords"
-                    app:tint="?attr/colorPrimary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Track Keywords"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Live rank check"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_keywords"
+                        app:tint="?attr/colorPrimary" />
 
-        <!-- 3. Fix SEO Errors -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardFixErrors"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="?attr/colorSurface">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Track Keywords"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            <LinearLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Live rank check"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardFixErrors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_fix"
-                    app:tint="?attr/colorPrimary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Fix Errors"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Improve performance"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_fix"
+                        app:tint="?attr/colorPrimary" />
 
-        <!-- 4. Generate Report -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardGenerateReport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="?attr/colorSurface">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Fix Errors"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            <LinearLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Improve performance"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardGenerateReport"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_report"
-                    app:tint="?attr/colorPrimary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Generate Report"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Share analysis"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_report"
+                        app:tint="?attr/colorPrimary" />
 
-        <!-- 5. Competitor Analysis -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardCompetitor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="?attr/colorSurface">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Generate Report"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            <LinearLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Share analysis"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCompetitor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_competitor"
-                    app:tint="?attr/colorPrimary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Competitor"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Compare with others"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnBackground"
-                    android:fontFamily="@font/poppins" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_competitor"
+                        app:tint="?attr/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Competitor"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Compare with others"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
         <!-- Analytics Overview Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginHorizontal="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
-            app:cardBackgroundColor="?attr/colorSurface">
+            app:cardBackgroundColor="@android:color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -345,7 +368,7 @@
                     android:text="Analytics Overview"
                     android:textStyle="bold"
                     android:textSize="18sp"
-                    android:textColor="?attr/colorOnBackground"
+                    android:textColor="#333333"
                     android:fontFamily="@font/poppins" />
 
                 <TextView
@@ -354,7 +377,7 @@
                     android:text="Keyword growth, traffic, etc."
                     android:textSize="14sp"
                     android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnBackground"
+                    android:textColor="#666666"
                     android:fontFamily="@font/poppins" />
 
                 <!-- Full-width Graph -->
@@ -377,7 +400,8 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginTop="24dp"
-            android:textColor="?attr/colorOnBackground"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="#333333"
             android:fontFamily="@font/poppins" />
 
         <LinearLayout
@@ -385,6 +409,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="16dp"
             android:paddingBottom="16dp">
 
             <TextView
@@ -392,7 +417,7 @@
                 android:layout_height="wrap_content"
                 android:text="• Checked site audit for example.com"
                 android:textSize="14sp"
-                android:textColor="?attr/colorOnBackground"
+                android:textColor="#666666"
                 android:fontFamily="@font/poppins"
                 android:padding="4dp" />
 
@@ -401,7 +426,7 @@
                 android:layout_height="wrap_content"
                 android:text="• Fixed 3 critical SEO issues"
                 android:textSize="14sp"
-                android:textColor="?attr/colorOnBackground"
+                android:textColor="#666666"
                 android:fontFamily="@font/poppins"
                 android:padding="4dp" />
 
@@ -410,7 +435,7 @@
                 android:layout_height="wrap_content"
                 android:text="• Added 7 new keywords"
                 android:textSize="14sp"
-                android:textColor="?attr/colorOnBackground"
+                android:textColor="#666666"
                 android:fontFamily="@font/poppins"
                 android:padding="4dp" />
         </LinearLayout>
