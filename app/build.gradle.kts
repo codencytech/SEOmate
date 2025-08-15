@@ -55,6 +55,8 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
 
     implementation("org.jsoup:jsoup:1.16.1")
+    implementation("com.airbnb.android:lottie:6.3.0")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.29")
 
     // OkHttp for API requests
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
