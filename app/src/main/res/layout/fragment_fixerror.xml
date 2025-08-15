@@ -1,14 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fixerrorFragment">
+    android:background="?attr/backgroundColor"
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <!-- Page Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/gradient_header">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/fix"
+                android:src="@drawable/ic_fix"
+                app:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="@string/fix_seo_errors"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="@string/check_and_fix_errors_using_ai"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Input Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_card"
+            android:elevation="4dp">
+
+            <EditText
+                android:id="@+id/inputUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#A78BFA"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/enter_website_url"
+                android:importantForAutofill="no"
+                android:inputType="textUri"
+                android:minHeight="48dp"
+                android:paddingBottom="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="#545454"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnCheckErrors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/check_errors"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#4CAF50"
+                android:textColor="?attr/colorOnPrimary"
+                android:fontFamily="@font/poppins"
+                tools:ignore="VisualLintButtonSize" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- Error Items -->
+        <LinearLayout
+            android:id="@+id/errorsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

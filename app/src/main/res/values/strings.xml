@@ -2,4 +2,9 @@
     <string name="app_name">SEOmate</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fix_seo_errors">Fix SEO Errors</string>
+    <string name="check_and_fix_errors_using_ai">Check and Fix Errors using AI</string>
+    <string name="fix">FIX</string>
+    <string name="enter_website_url">Enter website URL</string>
+    <string name="check_errors">Check Errors</string>
 </resources>
