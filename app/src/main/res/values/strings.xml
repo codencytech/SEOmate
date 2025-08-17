@@ -7,4 +7,10 @@
     <string name="fix">FIX</string>
     <string name="enter_website_url">Enter website URL</string>
     <string name="check_errors">Check Errors</string>
+    <string name="generate_report">Generate Report</string>
+    <string name="generate_seo_report">Generate SEO Report</string>
+    <string name="download_or_preview_report">Download or Preview your website report</string>
+    <string name="download">Download</string>
+    <string name="share">Share</string>
+
 </resources>

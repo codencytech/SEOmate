@@ -1,17 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/backgroundColor">
 
-    <TextView
-        android:id="@+id/tvReport"
+    <!-- Page Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/gradient_header">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_report"
+            app:tint="@android:color/white"
+            android:contentDescription="@string/generate_report" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="@string/generate_seo_report"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="@string/download_or_preview_report"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Input Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_card"
+        android:elevation="4dp">
+
+        <!-- URL Input -->
+        <EditText
+            android:id="@+id/inputUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#A78BFA"
+            android:fontFamily="@font/poppins"
+            android:hint="@string/enter_website_url"
+            android:inputType="textUri"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="#545454"
+            android:textSize="16sp"
+            android:minHeight="48dp" />
+
+        <!-- Report Type Dropdown -->
+        <Spinner
+            android:id="@+id/spinnerReportType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/report_types"
+            android:spinnerMode="dropdown"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#A78BFA"/>
+
+
+        <!-- Export Type Dropdown -->
+        <Spinner
+            android:id="@+id/spinnerExport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/export_formats"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#A78BFA"/>
+
+
+        <!-- Generate Report Button -->
+        <Button
+            android:id="@+id/btnGenerateReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/generate_report"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#4CAF50"
+            android:textColor="?attr/colorOnPrimary"
+            android:fontFamily="@font/poppins" />
+
+        <!-- Preview Report Button -->
+        <Button
+            android:id="@+id/btnPreviewReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Preview Report"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/poppins" />
+
+    </LinearLayout>
+
+    <!-- Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Report Fragment"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- PDF Preview -->
+    <FrameLayout
+        android:id="@+id/pdfPreviewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_card"
+        android:visibility="gone" />
+
+    <!-- Download / Share Buttons -->
+    <LinearLayout
+        android:id="@+id/actionsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnDownload"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/download"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="@string/share"
+            android:backgroundTint="#FF9800"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

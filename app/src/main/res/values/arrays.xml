@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Report types -->
+    <string-array name="report_types">
+        <item>Full Audit</item>
+        <item>Quick Summary</item>
+    </string-array>
+
+    <!-- Export formats -->
+    <string-array name="export_formats">
+        <item>PDF</item>
+        <item>CSV</item>
+        <item>TXT</item>
+    </string-array>
+</resources>
