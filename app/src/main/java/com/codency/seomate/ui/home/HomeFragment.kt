@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
         binding.cardCompetitor.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_competitorFragment)
         }
+
     }
 
     override fun onDestroyView() {
