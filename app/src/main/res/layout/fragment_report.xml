@@ -70,25 +70,16 @@
             android:textSize="16sp"
             android:minHeight="48dp" />
 
-        <!-- Report Type Dropdown -->
-        <Spinner
-            android:id="@+id/spinnerReportType"
+        <EditText
+            android:id="@+id/inputCompetitor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/report_types"
-            android:spinnerMode="dropdown"
             android:layout_marginTop="8dp"
+            android:hint="(Optional) Competitor URL"
+            android:inputType="textUri"
+            android:minHeight="48dp"
             android:backgroundTint="#A78BFA"/>
 
-
-        <!-- Export Type Dropdown -->
-        <Spinner
-            android:id="@+id/spinnerExport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/export_formats"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="#A78BFA"/>
 
 
         <!-- Generate Report Button -->
@@ -100,17 +91,6 @@
             android:layout_marginTop="12dp"
             android:backgroundTint="#4CAF50"
             android:textColor="?attr/colorOnPrimary"
-            android:fontFamily="@font/poppins" />
-
-        <!-- Preview Report Button -->
-        <Button
-            android:id="@+id/btnPreviewReport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Preview Report"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="#2196F3"
-            android:textColor="@android:color/white"
             android:fontFamily="@font/poppins" />
 
     </LinearLayout>
