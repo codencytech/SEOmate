@@ -60,6 +60,16 @@
         android:name="com.codency.seomate.ui.quickscore.QuickScoreFragment"
         android:label="Quick Score"
         tools:layout="@layout/fragment_quickscore" />
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.codency.seomate.ui.SignupFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.codency.seomate.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 
 
 </navigation>
