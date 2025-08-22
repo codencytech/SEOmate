@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -28,48 +28,50 @@
             android:id="@+id/action_homeFragment_to_quickscoreFragment"
             app:destination="@id/quickscoreFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/reportFragment"
         android:name="com.codency.seomate.ui.report.ReportFragment"
         android:label="ReportFragment" />
+
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.codency.seomate.ui.settings.SettingsFragment"
         android:label="SettingsFragment" />
+
     <fragment
         android:id="@+id/keywordFragment"
         android:name="com.codency.seomate.ui.KeywordFragment"
         android:label="Keywords" />
+
     <fragment
         android:id="@+id/auditFragment"
         android:name="com.codency.seomate.ui.AuditFragment"
         android:label="fragment_audit"
         tools:layout="@layout/fragment_audit" />
+
     <fragment
         android:id="@+id/competitorFragment"
         android:name="com.codency.seomate.ui.CompetitorFragment"
         android:label="fragment_competitor"
         tools:layout="@layout/fragment_competitor" />
+
     <fragment
         android:id="@+id/fixerrorFragment"
         android:name="com.codency.seomate.ui.fixerrorFragment"
         android:label="fragment_fixerror"
         tools:layout="@layout/fragment_fixerror" />
+
     <fragment
         android:id="@+id/quickscoreFragment"
         android:name="com.codency.seomate.ui.quickscore.QuickScoreFragment"
         android:label="Quick Score"
         tools:layout="@layout/fragment_quickscore" />
-    <fragment
-        android:id="@+id/signupFragment"
-        android:name="com.codency.seomate.ui.SignupFragment"
-        android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.codency.seomate.ui.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
-
 
 </navigation>

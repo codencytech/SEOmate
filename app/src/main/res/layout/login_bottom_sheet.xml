@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="24dp"
+    app:strokeColor="#F1E6FF"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header: centered title + close button -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvLoginTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Sign In"
+                android:textColor="#A020F0"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/closeBtn"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="end"
+                android:contentDescription="Close"
+                android:padding="6dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_close" />
+        </FrameLayout>
+
+        <!-- Subheading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome back! Sign in to continue."
+            android:textSize="14sp"
+            android:textColor="#6B5A8E"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Email -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:boxStrokeColor="#A020F0"
+            app:hintTextColor="#8E66C6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:autofillHints="emailAddress"
+                android:imeOptions="actionNext"
+                android:textColor="#3A2B52"
+                android:textColorHint="@color/grey_light"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Password -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            app:endIconMode="password_toggle"
+            app:endIconTint="#A020F0"
+            app:boxStrokeColor="#A020F0"
+            app:hintTextColor="#8E66C6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:autofillHints="password"
+                android:imeOptions="actionDone"
+                android:textColor="#3A2B52"
+                android:textColorHint="@color/grey_light"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Forgot password -->
+        <TextView
+            android:id="@+id/tvForgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot password?"
+            android:textColor="#A020F0"
+            android:textSize="13sp"
+            android:layout_gravity="end"
+            android:paddingTop="2dp"
+            android:paddingBottom="8dp" />
+
+        <!-- Login button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            app:cornerRadius="16dp"
+            app:backgroundTint="#A020F0"
+            android:textColor="@android:color/white" />
+
+        <!-- Divider -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="6dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#E9E1F7" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="or"
+                android:textColor="#8E66C6"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#E9E1F7" />
+        </LinearLayout>
+
+        <!-- Sign up link -->
+        <TextView
+            android:id="@+id/tvNoAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don’t have an account? Sign up"
+            android:textSize="14sp"
+            android:textColor="#A020F0"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
+            android:paddingBottom="4dp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

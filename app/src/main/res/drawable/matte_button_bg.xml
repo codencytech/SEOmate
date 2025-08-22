@@ -1,0 +1,19 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#50D399F2"> <!-- ripple black with transparency -->
+
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Background color -->
+            <solid android:color="#3BFFFFFF" /> <!-- semi-transparent white -->
+
+            <!-- Rounded corners -->
+            <corners android:radius="12dp" />
+
+            <!-- Stroke -->
+            <stroke
+                android:width="0.5dp"
+                android:color="#A020F0" /> <!-- purple stroke -->
+        </shape>
+    </item>
+
+</ripple>

@@ -11,12 +11,4 @@
         android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_settings"
         android:title="Settings" />
-    <item
-        android:id="@+id/loginFragment"
-        android:icon="@drawable/ic_report"
-        android:title="login"/>
-    <item
-        android:id="@+id/signupFragment"
-        android:icon="@drawable/ic_report"
-        android:title="signup"/>
 </menu>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="24dp"
+    app:strokeColor="#F1E6FF"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header: centered title + close button -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvSignupTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Create account"
+                android:textColor="#A020F0"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/closeBtn"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="end"
+                android:contentDescription="Close"
+                android:padding="6dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_close" />
+        </FrameLayout>
+
+        <!-- Subheading -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign up to get started with Seomate"
+            android:textSize="14sp"
+            android:textColor="#6B5A8E"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Email -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:boxStrokeColor="#A020F0"
+            app:hintTextColor="#8E66C6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editSignupEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"
+                android:textColor="#3A2B52"
+                android:textColorHint="#B9A7D6"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Password -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:endIconMode="password_toggle"
+            app:endIconTint="#A020F0"
+            app:boxStrokeColor="#A020F0"
+            app:hintTextColor="#8E66C6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editSignupPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:imeOptions="actionNext"
+                android:textColor="#3A2B52"
+                android:textColorHint="#B9A7D6"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Confirm Password -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:endIconMode="password_toggle"
+            app:endIconTint="#A020F0"
+            app:boxStrokeColor="#A020F0"
+            app:hintTextColor="#8E66C6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editSignupConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"
+                android:textColor="#3A2B52"
+                android:textColorHint="#B9A7D6"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Signup Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign up"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            app:cornerRadius="16dp"
+            app:backgroundTint="#A020F0"
+            android:textColor="@android:color/white" />
+
+        <!-- Already have account -->
+        <TextView
+            android:id="@+id/tvHaveAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have an account? Login"
+            android:textSize="14sp"
+            android:textColor="#A020F0"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14dp"
+            android:paddingBottom="4dp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
