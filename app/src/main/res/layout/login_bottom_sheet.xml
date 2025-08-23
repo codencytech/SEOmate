@@ -125,6 +125,17 @@
             app:backgroundTint="#A020F0"
             android:textColor="@android:color/white" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleSmall"
+            android:indeterminate="true"
+            android:layout_marginTop="12dp"/>
+
+
         <!-- Divider -->
         <LinearLayout
             android:layout_width="match_parent"

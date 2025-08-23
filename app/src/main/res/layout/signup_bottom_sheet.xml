@@ -76,7 +76,7 @@
             android:id="@+id/tvVerificationMsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Verification email sent. Please check your inbox."
+            android:text="Verification email sent. Please check your inbox or spam"
             android:textSize="13sp"
             android:textColor="@android:color/holo_green_dark"
             android:visibility="gone"
@@ -146,6 +146,48 @@
             app:cornerRadius="16dp"
             app:backgroundTint="#A020F0"
             android:textColor="@android:color/white" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleSmall"
+            android:indeterminate="true"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Divider -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="6dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#E9E1F7" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="or"
+                android:textColor="#8E66C6"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#E9E1F7" />
+        </LinearLayout>
+
 
         <!-- Already have account -->
         <TextView
