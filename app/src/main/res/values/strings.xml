@@ -12,5 +12,9 @@
     <string name="download_or_preview_report">Download or Preview your website report</string>
     <string name="download">Download</string>
     <string name="share">Share</string>
+    <string name="logout_title">Logout</string>
+    <string name="logout_message">Are you sure you want to logout?</string>
+    <string name="logout">Logout</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

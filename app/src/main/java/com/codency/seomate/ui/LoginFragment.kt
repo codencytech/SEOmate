@@ -9,8 +9,14 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.codency.seomate.R
+import com.codency.seomate.ui.home.HomeFragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
 
@@ -21,6 +27,9 @@ class LoginFragment : Fragment() {
     private lateinit var bottomSheetContainer: FrameLayout
 
     private var isSheetVisible = false
+
+    // FirebaseAuth instance
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +43,9 @@ class LoginFragment : Fragment() {
         loginButton = view.findViewById(R.id.loginbtn)
         signupText = view.findViewById(R.id.tvSignup)
         bottomSheetContainer = view.findViewById(R.id.bottomSheetContainer)
+
+        // Initialize FirebaseAuth
+        auth = FirebaseAuth.getInstance()
 
         // Login button -> show login card
         loginButton.setOnClickListener {
@@ -90,12 +102,106 @@ class LoginFragment : Fragment() {
         card.findViewById<View>(R.id.closeBtn)?.setOnClickListener {
             hideBottomSheet()
         }
+
+        // ✅ Handle login
+        if (layoutRes == R.layout.login_bottom_sheet) {
+            val emailField = card.findViewById<TextInputEditText>(R.id.editEmail)
+            val passField = card.findViewById<TextInputEditText>(R.id.editPassword)
+            val loginBtn = card.findViewById<View>(R.id.btnLogin)
+
+            loginBtn.setOnClickListener {
+                val email = emailField.text?.toString()?.trim() ?: ""
+                val password = passField.text?.toString()?.trim() ?: ""
+
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(requireContext(), "Please enter email and password", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(requireActivity()) { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            if (user != null && user.isEmailVerified) {
+                                Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
+                                hideBottomSheet()
+
+                                // Notify MainActivity to check auth state
+                                (activity as? MainActivity)?.requestAuthCheck()
+
+                                // Navigate to home
+                                val navOptions = androidx.navigation.NavOptions.Builder()
+                                    .setPopUpTo(R.id.loginFragment, true)
+                                    .build()
+
+                                findNavController().navigate(R.id.action_loginFragment_to_homeFragment, null, navOptions)
+                            } else {
+                                Toast.makeText(requireContext(), "Please verify your email before logging in", Toast.LENGTH_LONG).show()
+                                auth.signOut()
+                            }
+                        } else {
+                            Toast.makeText(requireContext(), "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                        }
+                    }
+            }
+        }
+
+        // Handle signup with email verification
+        if (layoutRes == R.layout.signup_bottom_sheet) {
+            val emailField = card.findViewById<TextInputEditText>(R.id.editSignupEmail)
+            val passField = card.findViewById<TextInputEditText>(R.id.editSignupPassword)
+            val confirmField = card.findViewById<TextInputEditText>(R.id.editSignupConfirm)
+            val signupBtn = card.findViewById<View>(R.id.btnCreate)
+            val verificationMsg = card.findViewById<TextView>(R.id.tvVerificationMsg)
+
+            // Dynamic message TextView
+            val verificationMessage = TextView(requireContext()).apply {
+                visibility = View.GONE
+                textSize = 14f
+                setTextColor(resources.getColor(android.R.color.holo_green_dark, null))
+                setPadding(0, 16, 0, 0)
+            }
+            (card as ViewGroup).addView(verificationMessage)
+
+            signupBtn.setOnClickListener {
+                val email = emailField.text?.toString()?.trim() ?: ""
+                val password = passField.text?.toString()?.trim() ?: ""
+                val confirmPassword = confirmField.text?.toString()?.trim() ?: ""
+
+                if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                    Toast.makeText(requireContext(), "All fields are required", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                if (password != confirmPassword) {
+                    Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(requireActivity()) { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            user?.sendEmailVerification()?.addOnCompleteListener { emailTask ->
+                                if (emailTask.isSuccessful) {
+                                    verificationMsg.visibility = View.VISIBLE
+                                } else {
+                                    Toast.makeText(requireContext(), "Failed to send verification email.", Toast.LENGTH_LONG).show()
+                                }
+                            }
+                            // Sign out user until verified
+                            auth.signOut()
+                        } else {
+                            Toast.makeText(requireContext(), "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                        }
+                    }
+            }
+        }
     }
 
     private fun hideBottomSheet() {
         if (!isSheetVisible) return
 
-        // Slide card down
         bottomSheetContainer.animate()
             .translationY(bottomSheetContainer.height.toFloat())
             .setDuration(300)
@@ -104,7 +210,6 @@ class LoginFragment : Fragment() {
                 bottomSheetContainer.removeAllViews()
             }.start()
 
-        // Restore seochart (position + size)
         seochart.animate()
             .translationY(0f)
             .scaleX(1f)
@@ -112,7 +217,6 @@ class LoginFragment : Fragment() {
             .setDuration(300)
             .start()
 
-        // Fade views back in
         titleText.animate().alpha(1f).setDuration(300).start()
         loginButton.animate().alpha(1f).setDuration(300).start()
         signupText.animate().alpha(1f).setDuration(300).start()

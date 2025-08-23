@@ -1,5 +1,6 @@
 package com.codency.seomate.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private var shouldCheckAuthState = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,39 +43,96 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Delay navigation check to avoid crash
+        // Always check auth state when activity is created
+        checkAuthState()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Check auth state when app comes to foreground
+        checkAuthState()
+    }
+
+    private fun checkAuthState() {
+        if (!shouldCheckAuthState) return
+
         binding.root.post {
             val currentUser = FirebaseAuth.getInstance().currentUser
-            Log.d("MainActivity", "Current user: $currentUser")
-
             val currentDest = navController.currentDestination?.id
-            Log.d("MainActivity", "Current destination ID: $currentDest")
 
-            if (currentUser == null) {
-                // Not logged in → only navigate if not already on LoginFragment
-                if (currentDest != R.id.loginFragment) {
-                    try {
-                        navController.navigate(R.id.loginFragment)
-                        Log.d("MainActivity", "Navigated to LoginFragment")
-                    } catch (e: Exception) {
-                        Log.e("MainActivity", "Error navigating to LoginFragment", e)
-                    }
+            Log.d("MainActivity", "Auth Check - User: $currentUser, Current destination: $currentDest")
+
+            if (currentUser != null) {
+                // User is logged in
+                if (currentDest == R.id.loginFragment) {
+                    // Navigate to home if on login screen
+                    navigateToHome()
                 }
+                // If already on home or other fragment, do nothing
             } else {
-                // Logged in → only navigate if not already on HomeFragment
-                if (currentDest != R.id.homeFragment) {
-                    try {
-                        navController.navigate(R.id.homeFragment)
-                        Log.d("MainActivity", "Navigated to HomeFragment")
-                    } catch (e: Exception) {
-                        Log.e("MainActivity", "Error navigating to HomeFragment", e)
-                    }
+                // User is not logged in
+                if (currentDest != R.id.loginFragment && currentDest != null) {
+                    // Navigate to login if not already there
+                    navigateToLogin()
                 }
             }
+
+            shouldCheckAuthState = false
+        }
+    }
+
+    private fun navigateToHome() {
+        try {
+            val navOptions = androidx.navigation.NavOptions.Builder()
+                .setPopUpTo(R.id.loginFragment, true)
+                .build()
+
+            navController.navigate(R.id.action_loginFragment_to_homeFragment, null, navOptions)
+            Log.d("MainActivity", "Navigated to HomeFragment")
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error navigating to HomeFragment", e)
+            // If action doesn't exist, try basic navigation
+            try {
+                navController.navigate(R.id.homeFragment)
+            } catch (e2: Exception) {
+                Log.e("MainActivity", "Fallback navigation also failed", e2)
+            }
+        }
+    }
+
+    private fun navigateToLogin() {
+        try {
+            val navOptions = androidx.navigation.NavOptions.Builder()
+                .setPopUpTo(R.id.homeFragment, true)
+                .build()
+
+            navController.navigate(R.id.loginFragment, null, navOptions)
+            Log.d("MainActivity", "Navigated to LoginFragment")
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error navigating to LoginFragment", e)
+            // If basic navigation fails, recreate activity
+            recreate()
+        }
+    }
+
+    @SuppressLint("GestureBackNavigation")
+    override fun onBackPressed() {
+        val currentDestination = navController.currentDestination?.id
+
+        // If we're on HomeFragment, minimize the app instead of going back to login
+        if (currentDestination == R.id.homeFragment) {
+            moveTaskToBack(true)
+        } else {
+            super.onBackPressed()
         }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+    // Call this method from fragments when they want to trigger auth check
+    fun requestAuthCheck() {
+        shouldCheckAuthState = true
     }
 }

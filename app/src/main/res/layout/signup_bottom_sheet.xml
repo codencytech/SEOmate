@@ -71,6 +71,19 @@
                 android:padding="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Verification message (hidden initially) -->
+        <TextView
+            android:id="@+id/tvVerificationMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verification email sent. Please check your inbox."
+            android:textSize="13sp"
+            android:textColor="@android:color/holo_green_dark"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp" />
+
         <!-- Password -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
