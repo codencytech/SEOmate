@@ -10,6 +10,14 @@
         <item name="backgroundColor">#FFFFFF</item>
         <item name="colorOnBackground">#1E1E1E</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <!-- Disable system background -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <!-- Let content draw behind system bars -->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
     <style name="Theme.SEOmate" parent="Base.Theme.SEOmate" />

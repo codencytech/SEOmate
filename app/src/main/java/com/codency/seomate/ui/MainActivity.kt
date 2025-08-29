@@ -5,23 +5,27 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.codency.seomate.R
 import com.codency.seomate.databinding.ActivityMainBinding
-import com.google.firebase.auth.FirebaseAuth
+import com.codency.seomate.databinding.LayoutCustomBottomNavBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private var shouldCheckAuthState = true
+    private lateinit var customNavBinding: LayoutCustomBottomNavBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val customNavView: View = binding.root.findViewById(R.id.custom_bottom_bar)
+        customNavBinding = LayoutCustomBottomNavBinding.bind(customNavView)
+        Log.d("MainActivity", "Custom Nav Bar found: ${customNavBinding.root != null}")
 
         // Initialize NavController safely
         val navHostFragment = supportFragmentManager
@@ -30,96 +34,79 @@ class MainActivity : AppCompatActivity() {
 
         navController = navHostFragment.navController
 
-        // Setup bottom navigation
-        binding.bottomNavigationView.setupWithNavController(navController)
+        setupCustomBottomNav()
 
         // Hide bottom nav when on LoginFragment
         navController.addOnDestinationChangedListener { _, destination, _ ->
             Log.d("MainActivity", "Navigated to ${destination.label}")
             if (destination.id == R.id.loginFragment) {
-                binding.bottomNavigationView.visibility = View.GONE
+                customNavBinding.root.visibility = View.GONE
             } else {
-                binding.bottomNavigationView.visibility = View.VISIBLE
-            }
-        }
-
-        // Always check auth state when activity is created
-        checkAuthState()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        // Check auth state when app comes to foreground
-        checkAuthState()
-    }
-
-    private fun checkAuthState() {
-        if (!shouldCheckAuthState) return
-
-        binding.root.post {
-            val currentUser = FirebaseAuth.getInstance().currentUser
-            val currentDest = navController.currentDestination?.id
-
-            Log.d("MainActivity", "Auth Check - User: $currentUser, Current destination: $currentDest")
-
-            if (currentUser != null) {
-                // User is logged in
-                if (currentDest == R.id.loginFragment) {
-                    // Navigate to home if on login screen
-                    navigateToHome()
-                }
-                // If already on home or other fragment, do nothing
-            } else {
-                // User is not logged in
-                if (currentDest != R.id.loginFragment && currentDest != null) {
-                    // Navigate to login if not already there
-                    navigateToLogin()
-                }
-            }
-
-            shouldCheckAuthState = false
-        }
-    }
-
-    private fun navigateToHome() {
-        try {
-            val navOptions = androidx.navigation.NavOptions.Builder()
-                .setPopUpTo(R.id.loginFragment, true)
-                .build()
-
-            navController.navigate(R.id.action_loginFragment_to_homeFragment, null, navOptions)
-            Log.d("MainActivity", "Navigated to HomeFragment")
-        } catch (e: Exception) {
-            Log.e("MainActivity", "Error navigating to HomeFragment", e)
-            // If action doesn't exist, try basic navigation
-            try {
-                navController.navigate(R.id.homeFragment)
-            } catch (e2: Exception) {
-                Log.e("MainActivity", "Fallback navigation also failed", e2)
+                customNavBinding.root.visibility = View.VISIBLE
+                updateCustomNavSelection(destination.id)
             }
         }
     }
 
-    private fun navigateToLogin() {
-        try {
-            val navOptions = androidx.navigation.NavOptions.Builder()
-                .setPopUpTo(R.id.homeFragment, true)
-                .build()
-
-            navController.navigate(R.id.loginFragment, null, navOptions)
-            Log.d("MainActivity", "Navigated to LoginFragment")
-        } catch (e: Exception) {
-            Log.e("MainActivity", "Error navigating to LoginFragment", e)
-            // If basic navigation fails, recreate activity
-            recreate()
+    private fun setupCustomBottomNav() {
+        // Set click listeners for each item
+        customNavBinding.homeItem.setOnClickListener {
+            navigateToFragment(R.id.homeFragment)
         }
+        customNavBinding.reportItem.setOnClickListener {
+            navigateToFragment(R.id.reportFragment)
+        }
+        customNavBinding.settingsItem.setOnClickListener {
+            navigateToFragment(R.id.settingsFragment)
+        }
+    }
+
+    private fun navigateToFragment(fragmentId: Int) {
+        val currentDest = navController.currentDestination?.id
+        if (currentDest != fragmentId) {
+            navController.navigate(fragmentId)
+        }
+    }
+
+    private fun updateCustomNavSelection(destinationId: Int) {
+        // Reset all items to inactive state
+        setItemInactive(customNavBinding.homeItem, customNavBinding.homeIcon, customNavBinding.homeActiveIndicator, R.drawable.ic_home)
+        setItemInactive(customNavBinding.reportItem, customNavBinding.reportIcon, customNavBinding.reportActiveIndicator, R.drawable.ic_report)
+        setItemInactive(customNavBinding.settingsItem, customNavBinding.settingIcon, customNavBinding.settingActiveIndicator, R.drawable.ic_settings)
+
+        // Set the active item based on the current destination
+        when (destinationId) {
+            R.id.homeFragment -> {
+                setItemActive(customNavBinding.homeItem, customNavBinding.homeIcon, customNavBinding.homeActiveIndicator, R.drawable.ic_home)
+            }
+            R.id.reportFragment -> {
+                setItemActive(customNavBinding.reportItem, customNavBinding.reportIcon, customNavBinding.reportActiveIndicator, R.drawable.ic_report)
+            }
+            R.id.settingsFragment -> {
+                setItemActive(customNavBinding.settingsItem, customNavBinding.settingIcon, customNavBinding.settingActiveIndicator, R.drawable.ic_settings)
+            }
+        }
+    }
+
+    private fun setItemInactive(itemView: View, iconView: View, indicatorView: View, outlineIconId: Int) {
+        if (iconView is androidx.appcompat.widget.AppCompatImageView) {
+            iconView.setImageResource(outlineIconId)
+            iconView.setColorFilter(ContextCompat.getColor(this, R.color.nav_inactive_color))
+        }
+        indicatorView.visibility = View.INVISIBLE
+    }
+
+    private fun setItemActive(itemView: View, iconView: View, indicatorView: View, solidIconId: Int) {
+        if (iconView is androidx.appcompat.widget.AppCompatImageView) {
+            iconView.setImageResource(solidIconId)
+            iconView.setColorFilter(ContextCompat.getColor(this, R.color.nav_active_color))
+        }
+        indicatorView.visibility = View.VISIBLE
     }
 
     @SuppressLint("GestureBackNavigation")
     override fun onBackPressed() {
         val currentDestination = navController.currentDestination?.id
-
-        // If we're on HomeFragment, minimize the app instead of going back to login
         if (currentDestination == R.id.homeFragment) {
             moveTaskToBack(true)
         } else {
@@ -129,10 +116,5 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
-    }
-
-    // Call this method from fragments when they want to trigger auth check
-    fun requestAuthCheck() {
-        shouldCheckAuthState = true
     }
 }

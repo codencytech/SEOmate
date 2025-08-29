@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.codency.seomate.R
 import com.codency.seomate.databinding.FragmentSettingsBinding
-import com.codency.seomate.ui.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -42,10 +41,10 @@ class SettingsFragment : Fragment() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.logout_title))
             .setMessage(getString(R.string.logout_message))
-            .setPositiveButton(getString(R.string.logout)) { dialog, which ->
+            .setPositiveButton(getString(R.string.logout)) { _, _ ->
                 performLogout()
             }
-            .setNegativeButton(getString(R.string.cancel)) { dialog, which ->
+            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
@@ -53,8 +52,6 @@ class SettingsFragment : Fragment() {
 
     private fun performLogout() {
         auth.signOut()
-        // Notify MainActivity to check auth state
-        (activity as? MainActivity)?.requestAuthCheck()
         navigateToLoginScreen()
     }
 
@@ -67,13 +64,17 @@ class SettingsFragment : Fragment() {
 
         try {
             val navOptions = androidx.navigation.NavOptions.Builder()
-                .setPopUpTo(R.id.homeFragment, true)
+                .setPopUpTo(R.id.homeFragment, true) // clears back stack
                 .build()
 
-            findNavController().navigate(R.id.action_settingsFragment_to_loginFragment, null, navOptions)
+            findNavController().navigate(
+                R.id.action_settingsFragment_to_loginFragment,
+                null,
+                navOptions
+            )
         } catch (e: Exception) {
-            // Fallback: let MainActivity handle it
-            activity?.recreate()
+            // fallback in case action missing
+            findNavController().navigate(R.id.loginFragment)
         }
     }
 

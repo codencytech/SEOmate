@@ -7,4 +7,13 @@
     <color name="colorPrimary">#667eea</color>
     <color name="colorPrimaryDark">#5a6fd8</color>
     <color name="colorAccent">#03DAC5</color>
+    <!-- Navbar Background Color (Dark Navy inspired by Design 2) -->
+    <color name="nav_background_color">#FFFF00FF</color>
+
+    <!-- Navbar Icon Colors -->
+    <color name="nav_inactive_color">#94A3B8</color> <!-- Muted blue-grey -->
+    <color name="nav_active_color">#3B82F6</color>   <!-- Bright blue -->
+
+    <!-- Active Dot Color (Same as active color) -->
+    <color name="active_dot_color">#3B82F6</color>
 </resources>

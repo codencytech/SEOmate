@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Solid center of the dot -->
+    <solid android:color="@color/active_dot_color" />
+
+    <!-- This creates the "glow" effect with a subtle gradient -->
+    <gradient
+        android:startColor="#803B82F6"
+        android:endColor="@color/active_dot_color"
+        android:gradientRadius="6dp"
+        android:type="radial" />
+
+    <!-- Size of the dot -->
+    <size
+        android:width="8dp"
+        android:height="8dp" />
+
+</shape>

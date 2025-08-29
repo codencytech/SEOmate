@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customBottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:padding="4dp"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    android:background="@drawable/bg_bottom_nav">
+
+    <!-- Home Item -->
+<androidx.constraintlayout.widget.ConstraintLayout
+android:id="@+id/homeItem"
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:clickable="true"
+android:focusable="true"
+android:contentDescription="homemenu"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toStartOf="@+id/reportItem"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintWidth_percent="0.33">
+
+<ImageView
+    android:id="@+id/homeActiveIndicator"
+    android:layout_width="4dp"
+    android:layout_height="4dp"
+    android:src="@drawable/bg_active_dot_glow"
+    android:visibility="invisible"
+    app:layout_constraintBottom_toTopOf="@+id/homeIcon"
+    app:layout_constraintEnd_toEndOf="@+id/homeIcon"
+    app:layout_constraintStart_toStartOf="@+id/homeIcon" />
+
+<ImageView
+    android:id="@+id/homeIcon"
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@drawable/ic_home"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:tint="@color/nav_inactive_color" />
+
+<TextView
+    android:id="@+id/homeLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Home"
+    android:textSize="10sp"
+    android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/homeIcon"
+    app:tint="@color/nav_inactive_color" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Report Item -->
+<androidx.constraintlayout.widget.ConstraintLayout
+android:id="@+id/reportItem"
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:clickable="true"
+android:focusable="true"
+android:contentDescription="reportmenu"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toStartOf="@+id/settingsItem"
+app:layout_constraintStart_toEndOf="@+id/homeItem"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintWidth_percent="0.33">
+
+<ImageView
+    android:id="@+id/reportActiveIndicator"
+    android:layout_width="4dp"
+    android:layout_height="4dp"
+    android:src="@drawable/bg_active_dot"
+    android:visibility="invisible"
+    app:layout_constraintBottom_toTopOf="@+id/reportIcon"
+    app:layout_constraintEnd_toEndOf="@+id/reportIcon"
+    app:layout_constraintStart_toStartOf="@+id/reportIcon" />
+
+<ImageView
+    android:id="@+id/reportIcon"
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@drawable/ic_report"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:tint="@color/nav_inactive_color" />
+
+<TextView
+    android:id="@+id/reportLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Report"
+    android:textSize="10sp"
+    android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/reportIcon"
+    app:tint="@color/nav_inactive_color" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Settings Item -->
+<androidx.constraintlayout.widget.ConstraintLayout
+android:id="@+id/settingsItem"
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:clickable="true"
+android:focusable="true"
+android:contentDescription="settingsmenu"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toEndOf="@+id/reportItem"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintWidth_percent="0.33">
+
+<ImageView
+    android:id="@+id/settingActiveIndicator"
+    android:layout_width="4dp"
+    android:layout_height="4dp"
+    android:src="@drawable/bg_active_dot"
+    android:visibility="invisible"
+    app:layout_constraintBottom_toTopOf="@+id/settingIcon"
+    app:layout_constraintEnd_toEndOf="@+id/settingIcon"
+    app:layout_constraintStart_toStartOf="@+id/settingIcon" />
+
+<ImageView
+    android:id="@+id/settingIcon"
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@drawable/ic_settings"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:tint="@color/nav_inactive_color" />
+
+<TextView
+    android:id="@+id/settingLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Settings"
+    android:textSize="10sp"
+    android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/settingIcon"
+    app:tint="@color/nav_inactive_color" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
